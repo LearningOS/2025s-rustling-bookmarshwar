@@ -5,7 +5,7 @@ target/
 *.pdb
 exercises/clippy/Cargo.toml
 exercises/clippy/Cargo.lock
-/Cargo.toml
+
 rust-project.json
 .idea
 .vscode/*

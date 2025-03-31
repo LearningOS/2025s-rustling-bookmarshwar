@@ -5,12 +5,14 @@ target/
 *.pdb
 exercises/clippy/Cargo.toml
 exercises/clippy/Cargo.lock
+exercises/Cargo.toml
 rust-project.json
 .idea
 .vscode/*
 !.vscode/extensions.json
 *.iml
 *.o
+
 public/
 
 # Local Netlify folder

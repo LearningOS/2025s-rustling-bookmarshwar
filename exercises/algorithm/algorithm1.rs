@@ -2,7 +2,7 @@
 	single linked list merge
 	This problem requires you to merge two ordered singly linked lists into one ordered singly linked list
 */
-// I AM NOT DONE
+
 
 use std::fmt::{self, Display, Formatter};
 use std::ptr::NonNull;
@@ -60,7 +60,9 @@ impl<T> LinkedList<T> {
         self.get_ith_node(self.start, index)
     }
 
-    fn get_ith_node(&mut self, node: Option<NonNull<Node<T>>>, index: i32) -> Option<&T> {
+    fn get_ith_node(&mut self, node: Option<NonNull<Node<T>>>, index: i32) -> Option<&T> 
+    
+    {
         match node {
             None => None,
             Some(next_ptr) => match index {
@@ -69,14 +71,26 @@ impl<T> LinkedList<T> {
             },
         }
     }
-	pub fn merge(list_a:LinkedList<T>,list_b:LinkedList<T>) -> Self
+	pub fn merge(mut list_a:LinkedList<T>,mut list_b:LinkedList<T>) -> Self
+    where 
+    T:Copy+Ord
 	{
-		//TODO
-		Self {
-            length: 0,
-            start: None,
-            end: None,
+        let l1=list_a.length;
+        let l2=list_b.length;
+        let mut v:Vec<T>=Vec::new();
+        for i  in 0..l1 as i32{
+            v.push(*list_a.get(i).unwrap());
         }
+        for i in 0..l2 as i32{
+v.push(*list_b.get(i).unwrap());
+            }
+            v.sort();
+		//TODO
+        let mut list_self = LinkedList::<T>::new();
+        for i in 0..v.len(){
+            list_self.add(v[i]);
+        }
+        list_self
 	}
 }
 
@@ -143,6 +157,7 @@ mod tests {
 			list_b.add(vec_b[i]);
 		}
 		println!("list a {} list b {}", list_a,list_b);
+        
 		let mut list_c = LinkedList::<i32>::merge(list_a,list_b);
 		println!("merged List is {}", list_c);
 		for i in 0..target_vec.len(){

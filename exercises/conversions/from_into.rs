@@ -30,7 +30,7 @@ impl Default for Person {
 // outcome of this needs to be handled appropriately.
 //
 // Steps:
-// 1. If the length of the provided string is 0, then return the default of
+// 1. If the length of the provided strin()g is 0, then return the default of
 //    Person.
 // 2. Split the given string on the commas present in it.
 // 3. Extract the first element from the split operation and use it as the name.
@@ -40,10 +40,27 @@ impl Default for Person {
 // If while parsing the age, something goes wrong, then return the default of
 // Person Otherwise, then return an instantiated Person object with the results
 
-// I AM NOT DONE
+
 
 impl From<&str> for Person {
     fn from(s: &str) -> Person {
+        if s.len()==0{
+            return Person::default();
+        }
+        let c:Vec<&str>=s.split(",").collect();
+        if c.len()!=2 || c[0].len()==0{
+            return Person::default();
+        }
+
+        let a=c[1].parse::<usize>();
+        match a{
+            Ok(age) => return Person{
+                name:c[0].to_string(),
+                age
+            },
+            Err(_) => return Person::default(),
+        }
+        
     }
 }
 

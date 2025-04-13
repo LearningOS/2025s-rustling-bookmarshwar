@@ -8,10 +8,7 @@ use std::mem::swap;
 #[allow(unused_variables, unused_assignments)]
 fn main() {
     let my_option: Option<()> = None;
-    match my_option {
-        Some(_) => (),
-        None => todo!(),
-    }
+    
 
     let my_arr = &[
         -1, -2, -3,
